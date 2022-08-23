@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kmc_medical_app/adminLgin.dart';
+import 'package:kmc_medical_app/loginpatient.dart';
 import 'package:lottie/lottie.dart';
 import 'package:kmc_medical_app/patientPortal.dart';
 
@@ -38,7 +40,9 @@ class _IntroScreenState extends State<IntroScreen> {
                     color: const Color(0xFFCA6CE5),
                     borderRadius: BorderRadius.circular(29),
                   ),
-                  child: TextButton(onPressed: (){}, child: const Text('Admin Portal',
+                  child: TextButton(
+                    onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AdminLogin())),
+                    child: const Text('Admin Portal',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
@@ -53,7 +57,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     borderRadius: BorderRadius.circular(29),
                   ),
                   child: TextButton(onPressed: (){
-                    Navigator.pushNamed(context, PatientPortal.id);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPatient()));
                   }, child: const Text('Patient Portal',
                     style: TextStyle(
                       color: Colors.white,

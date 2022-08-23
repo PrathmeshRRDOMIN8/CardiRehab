@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:kmc_medical_app/listOfCardiacRehab.dart';
 import 'package:kmc_medical_app/pushQuizPage.dart';
 
-class DetailDivision extends StatelessWidget {
+class DetailDivision extends StatefulWidget {
   static const String id = 'Details';
-  const DetailDivision({Key? key}) : super(key: key);
+  String patient_id;
+  DetailDivision(@required this.patient_id);
 
   @override
+  State<DetailDivision> createState() => _DetailDivisionState();
+}
+
+class _DetailDivisionState extends State<DetailDivision> {
+  late String patient_id=widget.patient_id;
+  @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Row(
@@ -41,7 +49,7 @@ class DetailDivision extends StatelessWidget {
                   borderRadius: BorderRadius.circular(29),
                 ),
                 child: TextButton(onPressed: (){
-                  Navigator.pushNamed(context, PushQuizPage.id);
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>PushQuizPage(patient_id)));
                 }, child: const Text('2.	Automatic Reinforcement messages (Every 3 days)',
                   style: TextStyle(
                     color: Colors.white,

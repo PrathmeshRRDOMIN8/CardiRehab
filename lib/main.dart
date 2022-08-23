@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
       initialRoute: IntroScreen.id,
       routes: {
         IntroScreen.id: (context) => IntroScreen(),
-        PatientPortal.id : (context) => PatientPortal(),
-        DetailDivision.id : (context) => DetailDivision(),
+
+        //DetailDivision.id : (context) => DetailDivision(),
         ListRehab.id : (context) => ListRehab(),
-        PushQuizPage.id : (context) => PushQuizPage(),
+        //PushQuizPage.id : (context) => PushQuizPage(),
         CareOfInciRite.id : (context) => CareOfInciRite(),
         WoundCare.id: (context)=> WoundCare(),
         Bathing.id: (context)=> Bathing(),
