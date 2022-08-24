@@ -14,7 +14,8 @@ const registerUser= async (req,res,next) => {
             role:role,
             emailid:emailid,
             phone:phone,
-            underprofessor:underprofessor,
+            health_report:[],
+            
            
 
 

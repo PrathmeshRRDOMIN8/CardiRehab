@@ -3,6 +3,7 @@ import 'package:kmc_medical_app/adminLgin.dart';
 import 'package:kmc_medical_app/loginpatient.dart';
 import 'package:lottie/lottie.dart';
 import 'package:kmc_medical_app/patientPortal.dart';
+import 'package:translator/translator.dart';
 
 class IntroScreen extends StatefulWidget {
   static const String id = 'Intro';
@@ -13,13 +14,40 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
+  GoogleTranslator translator=GoogleTranslator();
+
+
+  var buttontext1="Admin Portal";
+  var buttontext2="Patient Portal";
+  void translate(){
+    translator.translate(buttontext1,to: "kn").then((output){
+      setState(() {
+        buttontext1=output.toString();
+      });
+
+    });
+    translator.translate(buttontext1,to: "kn").then((output){
+      buttontext2=output.toString();
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: ()=>translate(),
+              icon: Icon(Icons.language),
+            color: Colors.black,
+          ),
+        ],
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body:
           Padding(
-            padding: EdgeInsets.symmetric(vertical: size.height*0.02, horizontal: size.width*0.02),
+            padding: EdgeInsets.symmetric(vertical: size.height*0.0001, horizontal: size.width*0.02),
             child: Column(
               children: [
                 SizedBox(
@@ -42,7 +70,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   ),
                   child: TextButton(
                     onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AdminLogin())),
-                    child: const Text('Admin Portal',
+                    child:  Text(buttontext1.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
@@ -58,7 +86,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   ),
                   child: TextButton(onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPatient()));
-                  }, child: const Text('Patient Portal',
+                  }, child:  Text(buttontext2.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
