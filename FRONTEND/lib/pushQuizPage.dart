@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class _PushQuizPageState extends State<PushQuizPage> {
     String url=PROD_URL+"/user/${patient_id}/addhealthdata";
 
 
-    void postdata() async{
+    Future<void> postdata() async{
       var dio= Dio();
       var body=jsonEncode({
         "question1":dropdownvalue1.toString(),
@@ -52,6 +52,15 @@ class _PushQuizPageState extends State<PushQuizPage> {
         print(err);
       }
     }
+
+    void showToast(String msg)=>Fluttertoast.showToast(
+        msg: msg,
+      backgroundColor: Colors.grey,
+      gravity: ToastGravity.BOTTOM,
+      fontSize: 18,
+      textColor: Colors.white,
+
+    );
     return Scaffold(
       body: SingleChildScrollView(
         child: Stepper(
@@ -60,14 +69,22 @@ class _PushQuizPageState extends State<PushQuizPage> {
           type: StepperType.vertical,
           currentStep: currentStep,
           onStepContinue: () {
+
             if(currentStep>=0&&currentStep<3) {
               setState(() => currentStep += 1);
             }
             else if(currentStep==3){
+
+
               setState(()=>{
                 postdata(),
-                Navigator.of(context).pop(),
+
               });
+              Navigator.of(context).pop();
+              showToast("Response Submitted, Please Fill it After 3 days");
+
+
+
             }
           },
           onStepCancel: () {
