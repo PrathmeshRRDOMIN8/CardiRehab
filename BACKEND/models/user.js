@@ -29,8 +29,8 @@ const UserSchema=mongoose.Schema({
         unique:false,
         datetime:{
             type:Date,
-            unique:true,
-            required:true
+            unique:false,
+            required:false,
         },
         question1:{
             type:String,

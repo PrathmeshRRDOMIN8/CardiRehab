@@ -3,7 +3,7 @@ const bcrypt=require('bcryptjs')
 
 
 const registerUser= async (req,res,next) => {
-    const{name,password,role,emailid,phone,underprofessor}= req.body;
+    const{name,password,role,emailid,phone}= req.body;
     if(password.length<6){
         return res.status(400).json({message:"Password must be atleast 6 characters long"});
     }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:kmc_medical_app/Static/url.dart';
 import 'package:kmc_medical_app/detailsdivision.dart';
+import 'package:kmc_medical_app/patientPortal.dart';
 //import 'package:kmc_medical_app/patientPortal.dart';
 
 
@@ -41,7 +42,7 @@ class _LoginPatientState extends State<LoginPatient> {
 
       if(response.statusCode==200){
 
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>DetailDivision(patient_id!)));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>PatientPortal(patient_id!)));
 
       }
 
